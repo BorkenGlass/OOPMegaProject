@@ -2,46 +2,32 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main{
-    public static void printByAddress(ArrayList<University>universities,String Address){
-        for (University u: universities) {
-            if(u.getAddress()==Address){
-                System.out.println(u.getName());
+    public static void printBirthWise(ArrayList<Employee> employees,int Year){
+        for (Employee e : employees) {
+            if(e.getYear() == Year){
+                System.out.println(e.toString());
             }
         }
     }
     public static void main(String[] args) {
-        ArrayList<University> universities = new ArrayList<>();
+        ArrayList<Employee> employees = new ArrayList<>();
+        employees.add(new FulltimeEmployee("Rahim", 01, 1999,6,22,23000));
+        employees.add(new ParttimeEmployee("Karim", 07, 1988, 9,25,8,340));
+        employees.add(new FulltimeEmployee("Jalil", 02,1986,8,8,65000));
+        employees.add(new ParttimeEmployee("Abbas", 23, 1976, 2,24,7,270));
+        employees.add(new ParttimeEmployee("Sahil", 21, 1998, 12,13,5,400));
+        employees.add(new FulltimeEmployee("Monjim", 5,1997,8,8,50000));
+        
+        Collections.sort(employees);
+        for (Employee e : employees) {
+            System.out.println(e.toString()+"\nSalary:"+e.getSalaray());
 
-        //use for testing the code:
-        universities.add(new PublicUniversity("University of Dhaka","Dhaka,Bangladesh", 1921, 03, 14, 32, 21, true));
-        universities.add(new PrivateUniversity("UIU", "Satarkul,Dhaka", 2002, 01, 11, 5, true, 25));
-        universities.add(new PublicUniversity("University of Chittagong","Chittagong,Bangladesh", 1988, 02, 11, 12, 18, true));
-        universities.add(new PublicUniversity("University of Khulna","Khulna,Bangladesh", 1997, 9, 14,10, 13, false));
-        universities.add(new PrivateUniversity("AIUB", "Kuril,Dhaka", 1998, 04, 12, 7, true, 25));
-        universities.add(new PrivateUniversity("South East", "Tejgoan,Dhaka", 2004, 03, 21, 3, false, 5));
+            System.out.println();
+        }
+        System.out.println("Employee With birth Year: ");
+        printBirthWise(employees,1999);
         
 
-        Collections.sort(universities);
-        for (University u : universities) {
-            System.out.println(u.toString());
-            if(u.isUgcApproved){
-                System.out.println(u.toString());
-            }
-        }
-        System.out.println("\nUGC Approved University List: ");
-        for (University u : universities) {
-            if(u.isUgcApproved()){
-                System.out.println(u.getName());
-            }
-        }
-        System.out.println("\nUniversity Without Politics: ");
-        for (University u : universities) {
-            if(!(u.isPoliticsAllowed())){
-                System.out.println(u.getName());
-            }
-        }
-        System.out.println("\nUniversity By Address: ");
-        printByAddress(universities, "Satarkul,Dhaka");
 
     }
 }
